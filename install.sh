@@ -65,6 +65,14 @@ nvm install 16
 
 npm install --global yarn
 
+# Install golang 
+curl -L https://go.dev/dl/go1.19.4.linux-amd64.tar.gz --output /tmp/go1.19.4.linux-amd64.tar.gz 
+
+tar -C /usr/local -xzf /tmp/go1.19.4.linux-amd64.tar.gz
+
+echo 'export PATH=$PATH:/usr/local/go/bin'>> ~/.bashrc
+
+
 # Install Postgres and create default user
 sudo apt install -y postgresql postgresql-contrib
 
