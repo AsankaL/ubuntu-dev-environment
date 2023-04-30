@@ -18,14 +18,14 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 
 sudo apt-get update
 
-# Download and install latest docker package
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-curl 'https://desktop.docker.com/linux/main/amd64/docker-desktop-4.12.0-amd64.deb' --output /tmp/docker-desktop-4.12.0-amd64.deb
+# https://docs.docker.com/engine/install/linux-postinstall/
+sudo groupadd docker
 
-sudo apt install -y /tmp/docker-desktop-4.12.0-amd64.deb 
+sudo usermod -aG docker $USER
 
-systemctl --user enable docker-desktop
-
+newgrp docker
 
 # Intall Pyenv, Python 3.XX & Poetry
 # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
@@ -47,23 +47,25 @@ echo 'export PATH="/home/asanka/.local/bin:$PATH"'>> ~/.bashrc
 
 source ~/.bashrc
 
-pyenv install 3.10.7
+pyenv install 3.10
+pyenv install 3.11
 
-pyenv global 3.10.7
-
-sudo apt-get install -y python-is-python3
+pyenv global 3.11
 
 curl -sSL https://install.python-poetry.org | python3 -
 
 # Install Nvm and Nodejs
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 source ~/.bashrc
 
 # Intall current Nodejs LTS version
-nvm install 16
+nvm install 18
 
-npm install --global yarn
+# Install Yarn
+corepack enable
+
+corepack prepare yarn@stable --activate
 
 # Install golang 
 curl -L https://go.dev/dl/go1.19.4.linux-amd64.tar.gz --output /tmp/go1.19.4.linux-amd64.tar.gz 
