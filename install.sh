@@ -84,3 +84,12 @@ sudo -u postgres createuser "$USER" --superuser
 
 # Remove no longer required packages 
 sudo apt autoremove -y
+
+# Install Postman
+sudo snap install postman
+
+# Install VScode
+sudo snap install code --classic
+
+# Install Dbeaver - Database tool
+sudo snap install dbeaver-ce
