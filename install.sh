@@ -63,9 +63,7 @@ source ~/.bashrc
 nvm install 18
 
 # Install Yarn
-corepack enable
-
-corepack prepare yarn@stable --activate
+npm install --global yarn
 
 # Install golang 
 curl -L https://go.dev/dl/go1.19.4.linux-amd64.tar.gz --output /tmp/go1.19.4.linux-amd64.tar.gz 
