@@ -81,6 +81,14 @@ sudo systemctl start postgresql.service
 
 sudo -u postgres createuser "$USER" --superuser
 
+# Install Php and required extensions
+sudo apt-get install -y openssl php-cli php-common php-curl php-json php-mbstring php-mysql php-xml php-zip
+
+# Install composer
+wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
+
+sudo mv composer.phar /usr/local/bin/composer
+
 # Remove no longer required packages 
 sudo apt autoremove -y
 
